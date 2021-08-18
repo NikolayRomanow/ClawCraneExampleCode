@@ -47,22 +47,22 @@ namespace DIInstallers
             Container
                 .BindFactory<Vector3, CustomCube, CustomCube.Factory>()
                 .FromComponentInNewPrefab(customCube)
-                .AsTransient();
+                .AsSingle();
             
             Container
                 .BindFactory<Vector3, CustomSphere, CustomSphere.Factory>()
                 .FromComponentInNewPrefab(customSphere)
-                .AsTransient();
+                .AsSingle();
             
             Container
                 .BindFactory<Vector3, CustomCylinder, CustomCylinder.Factory>()
                 .FromComponentInNewPrefab(customCylinder)
-                .AsTransient();
+                .AsSingle();
             
             Container
                 .BindFactory<Vector3, CustomMushroom, CustomMushroom.Factory>()
                 .FromComponentInNewPrefab(customMushroom)
-                .AsTransient();
+                .AsSingle();
         }
         
         private void BindCraneButton()
