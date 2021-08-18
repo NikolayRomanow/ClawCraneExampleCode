@@ -7,19 +7,23 @@ namespace Common
 {
     public class CustomMeshesSpawner : MonoBehaviour
     {
-        private CustomCube.Factory _customCubeFactory;
-        private CustomSphere.Factory _customSphereFactory;
-        private CustomCylinder.Factory _customCylinderFactory;
-        private CustomMushroom.Factory _customMushroomFactory;
+        private CustomMesh.Factory<CustomCube> _customCubeFactory;
+        private CustomMesh.Factory<CustomSphere> _customSphereFactory;
+        private CustomMesh.Factory<CustomCylinder> _customCylinderFactory;
+        private CustomMesh.Factory<CustomMushroom> _customMushroomFactory;
 
+        private Transform _emptyParentForCustomMeshes;
+        
         [Inject]
-        private void Construct(CustomCube.Factory customCubeFactory, CustomSphere.Factory customSphereFactory,
-            CustomCylinder.Factory customCylinderFactory, CustomMushroom.Factory customMushroomFactory)
+        private void Construct(CustomMesh.Factory<CustomCube> customCubeFactory, CustomMesh.Factory<CustomSphere> customSphereFactory,
+            CustomMesh.Factory<CustomCylinder> customCylinderFactory, CustomMesh.Factory<CustomMushroom> customMushroomFactory)
         {
             _customCubeFactory = customCubeFactory;
             _customSphereFactory = customSphereFactory;
             _customCylinderFactory = customCylinderFactory;
             _customMushroomFactory = customMushroomFactory;
+
+            _emptyParentForCustomMeshes = new GameObject("EmptyParentForCustomMeshes").transform;
             
             SpawnMeshes(10,10,10,10);
         }
@@ -31,7 +35,7 @@ namespace Common
                 float x = Random.Range(-3f, 3f);
                 float z = Random.Range(-3f, 3f);
 
-                _customCubeFactory.Create(new Vector3(x, 0.1f, z));
+                _customCubeFactory.Create(new Vector3(x, 0.1f, z), _emptyParentForCustomMeshes);
             }
             
             for (int i = 0; i < spheresCount; i++)
@@ -39,7 +43,7 @@ namespace Common
                 float x = Random.Range(-3f, 3f);
                 float z = Random.Range(-3f, 3f);
 
-                _customSphereFactory.Create(new Vector3(x, 0.1f, z));
+                _customSphereFactory.Create(new Vector3(x, 0.1f, z), _emptyParentForCustomMeshes);
             }
             
             for (int i = 0; i < cylindersCount; i++)
@@ -47,7 +51,7 @@ namespace Common
                 float x = Random.Range(-3f, 3f);
                 float z = Random.Range(-3f, 3f);
 
-                _customCylinderFactory.Create(new Vector3(x, 0.1f, z));
+                _customCylinderFactory.Create(new Vector3(x, 0.1f, z), _emptyParentForCustomMeshes);
             }
             
             for (int i = 0; i < mushroomsCount; i++)
@@ -55,7 +59,7 @@ namespace Common
                 float x = Random.Range(-3f, 3f);
                 float z = Random.Range(-3f, 3f);
 
-                _customMushroomFactory.Create(new Vector3(x, 0.1f, z));
+                _customMushroomFactory.Create(new Vector3(x, 0.1f, z), _emptyParentForCustomMeshes);
             }
         }
     }

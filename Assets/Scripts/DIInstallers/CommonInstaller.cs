@@ -45,22 +45,22 @@ namespace DIInstallers
         private void BindCustomMeshesFactories()
         {
             Container
-                .BindFactory<Vector3, CustomCube, CustomCube.Factory>()
+                .BindFactory<Vector3, Transform, CustomCube, CustomMesh.Factory<CustomCube>>()
                 .FromComponentInNewPrefab(customCube)
                 .AsSingle();
             
             Container
-                .BindFactory<Vector3, CustomSphere, CustomSphere.Factory>()
+                .BindFactory<Vector3, Transform, CustomSphere, CustomMesh.Factory<CustomSphere>>()
                 .FromComponentInNewPrefab(customSphere)
                 .AsSingle();
             
             Container
-                .BindFactory<Vector3, CustomCylinder, CustomCylinder.Factory>()
+                .BindFactory<Vector3, Transform, CustomCylinder, CustomMesh.Factory<CustomCylinder>>()
                 .FromComponentInNewPrefab(customCylinder)
                 .AsSingle();
             
             Container
-                .BindFactory<Vector3, CustomMushroom, CustomMushroom.Factory>()
+                .BindFactory<Vector3, Transform, CustomMushroom, CustomMesh.Factory<CustomMushroom>>()
                 .FromComponentInNewPrefab(customMushroom)
                 .AsSingle();
         }

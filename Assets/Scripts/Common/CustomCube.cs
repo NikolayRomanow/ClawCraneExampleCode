@@ -7,6 +7,6 @@ namespace Common
 {
     public class CustomCube : CustomMesh
     {
-        public class Factory : PlaceholderFactory<Vector3, CustomCube> {}
+        
     }
 }
